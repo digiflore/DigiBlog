@@ -1,7 +1,6 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<?php require_once("header.php"); ?>
 <h1>Mon super blog !</h1>
 <p>Derniers articles du blog :</p>
 
@@ -18,7 +17,7 @@ while ($data = $posts->fetch()) {
       <?= nl2br(htmlspecialchars($data['content'])) ?>
       <br>
       <br>
-      <em><a href="index.php?action=post&id=<?= $data['id'] ?>">Lire la suite ...</a></em>
+      <em><a href="index.php?action=post&id_post=<?= $data['id'] ?>">Lire la suite ...</a></em>
     </p>
   </div>
 <?php

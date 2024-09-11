@@ -1,17 +1,5 @@
 <?php
 require_once(APP_ROOT . './models/front/CommentModel.php');
-function GetComment()
-{
-  $CommentModel = new CommentModel();
-
-  $affectedLines = $CommentModel->GetComment($_GET['commentId']);
-
-  if ($affectedLines === false) {
-    throw new Exception('Impossible d\'afficher le commentaire !');
-  } else {
-    header('Location: index.php?action=post&commentId=' . $_GET['commentId']);
-  }
-}
 
 function AddComment(string $postId, array $input)
 {
@@ -31,14 +19,18 @@ function AddComment(string $postId, array $input)
   if (!$success) {
     throw new Exception('Impossible d\'ajouter le commentaire !');
   } else {
-    header('Location: index.php?action=post&id=' . $postId);
+    header('Location: index.php?action=post&id_post=' . $postId);
   }
 }
 
-function EditComment(string $postId, string $commentId, array $input)
+function EditComment(string $postId, array $input)
 {
+  var_dump($input);
+  $commentId = null;
   $comment = null;
-  if (!empty($input['comment'])) {
+
+  if (!empty($input['id']) && !empty($input['comment'])) {
+    $commentId = $input['id'];
     $comment = $input['comment'];
   } else {
     throw new Exception('Les données du formulaire sont invalides.');
@@ -49,7 +41,7 @@ function EditComment(string $postId, string $commentId, array $input)
   if (!$success) {
     throw new Exception('Impossible de modifier le commentaire !');
   } else {
-    header('Location: index.php?action=post&id=' . $postId);
+    header('Location: index.php?action=post&id_post=' . $postId);
   }
 }
 
@@ -60,6 +52,6 @@ function RemoveComment($postId, $commentId)
   if (!$success) {
     throw new Exception('Impossible de supprimer le commentaire !');
   } else {
-    header('Location: index.php?action=post&id=' . $postId);
+    header('Location: index.php?action=post&id_post=' . $postId);
   }
 }

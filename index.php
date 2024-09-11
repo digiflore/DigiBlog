@@ -5,14 +5,15 @@
   <link href="./public/css/style.css" rel="stylesheet">
 </head>
 
+
 <!--
 URLs possibles :
 - /
 - /action=listPosts
-- /action=post&id=<idpost>
-- /action=addComment&id=<idpost>
-- /action=editComment&id=<idpost>
-- /action=removeComment&id=<idComment>
+- /action=post&id_post=<id_post>
+- /action=addComment&id_comment=<id_comment>
+- /action=editComment&id_comment=<id_comment>
+- /action=removeComment&id_comment=<id_comment>
 -->
 
 <?php
@@ -26,22 +27,31 @@ try {
         break;
 
       case 'post':
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+        if (isset($_GET['id_post']) && $_GET['id_post'] > 0) {
           GetPost();
         } else {
           echo 'Erreur : aucun identifiant de billet envoyé';
         }
         break;
       case 'addComment':
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-          AddComment($_GET['id'], $_POST);
+        if (isset($_GET['id_comment']) && $_GET['id_comment'] > 0) {
+          AddComment($_GET['id_comment'], $_POST);
+        } else {
+          throw new Exception('Aucun identifiant de billet envoyé');
+        }
+        break;
+      case 'editComment':
+        var_dump($_GET);
+        var_dump($_POST);
+        if (isset($_GET['id_post']) && $_GET['id_comment'] > 0) {
+          EditComment($_GET['id_post'], $_POST);
         } else {
           throw new Exception('Aucun identifiant de billet envoyé');
         }
         break;
       case 'removeComment':
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-          RemoveComment($_GET['id_post'], $_GET['id']);
+        if (isset($_GET['id_comment']) && $_GET['id_comment'] > 0) {
+          RemoveComment($_GET['id_post'], $_GET['id_comment']);
         } else {
           throw new Exception('Aucun identifiant de billet envoyé');
         }

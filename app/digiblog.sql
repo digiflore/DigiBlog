@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 09 sep. 2024 à 07:42
+-- Généré le : mer. 11 sep. 2024 à 04:46
 -- Version du serveur : 8.3.0
 -- Version de PHP : 8.2.18
 
@@ -43,15 +43,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `author`, `mail`, `comment`, `comment_date`) VALUES
-(1, 1, 'Mathieu', '', 'Preum\'s', '2022-03-03 13:00:42'),
-(2, 1, 'Sam', '', 'Quelqu\'un a un avis là-dessus ? Je ne sais pas quoi en penser.', '2022-03-03 13:01:42'),
-(3, 1, 'moi', '', 'dddd', '2024-09-03 16:46:28'),
-(4, 2, 'test', '', 'rooo\r\n', '2024-09-05 00:19:07'),
-(5, 2, 'fff', '', 'fff', '2024-09-05 00:51:08'),
-(7, 1, 'ddd', '', 'ddd', '2024-09-05 09:48:39'),
-(9, 2, 'moi', '', 'j\'aime beaucoup cet article', '2024-09-08 16:11:00'),
-(10, 2, 'd', 'd', 'ddddd', '2024-09-08 16:42:51'),
-(11, 2, 'c\'est moi', 'c\'est mon mail', 'alors je lis mais il faut pouvoir modifier pour le mettre à jour.', '2024-09-08 16:43:25');
+(1, 1, 'Mathieu', '', 'Premier commentaire ! Bienvenue et bon courage pour la suite.', '2022-03-03 13:00:42'),
+(2, 1, 'Sam', '', 'Hâte de voir comment ce blog évolue !', '2024-09-08 13:01:42'),
+(3, 1, 'moi', '', 'C\'est super !', '2024-09-03 16:46:28'),
+(4, 2, 'Moi', '', 'Bon courage !\r\n', '2024-09-11 00:19:07');
 
 -- --------------------------------------------------------
 
@@ -73,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `creation_date`) VALUES
-(1, 'Bienvenue sur le blog de l\'AVBN !', 'Je vous souhaite à toutes et à tous la bienvenue sur le blog qui parlera de... l\'Association de VolleyBall de Nuelly !', '2022-02-17 16:28:41'),
-(2, 'L\'AVBN à la conquête du monde !', 'C\'est officiel, le club a annoncé à la radio hier soir \"J\'ai l\'intention de conquérir le monde !\".\r\nIl a en outre précisé que le monde serait à sa botte en moins de temps qu\'il n\'en fallait pour dire \"Association de VolleyBall de Nuelly\". Pas dur, ceci dit entre nous...', '2022-02-17 16:28:42');
+(1, 'Bienvenue sur Digiblog !', 'Je vous souhaite à toutes et à tous la bienvenue sur le blog de DigiFlore, Digiblog !\r\nCe blog est conçu en MVC PHP et est en évolution permanente.\r\nIl répondra je l\'espère à vos besoins les plus fou.', '2024-09-08 16:28:41'),
+(2, 'Comment à débuter Digiblog ?', 'Digiblog à débuter d\'une volonté de m\'améliorer dans les outils informatiques. Ingénieur en développement informatique, je cherche à me perfectionner dans les outils actuelles. Et créer un blog est un gros défi pour moi.', '2024-09-11 16:28:42');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
