@@ -23,6 +23,7 @@ function AddComment(string $postId, array $input)
   }
 }
 
+// Modification d'un commentaire
 function EditComment(string $postId, array $input)
 {
   var_dump($input);

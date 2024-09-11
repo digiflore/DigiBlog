@@ -39,6 +39,7 @@ class CommentModel extends Model
     return $affectedLines;
   }
 
+  // Suppression d'un commentaire
   public function DeleteComment($commentId)
   {
     $this->db = $this->dbConnect();
