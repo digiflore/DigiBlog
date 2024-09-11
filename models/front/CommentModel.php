@@ -17,7 +17,6 @@ class CommentModel extends Model
     $this->db = $this->dbConnect();
     $comment = $this->db->prepare('SELECT id, author,mail, comment FROM comments WHERE id = ? ORDER BY comment_date DESC');
     $comment->execute(array($commentId));
-    var_dump($comment);
     return $comment;
   }
 

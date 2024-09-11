@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link href="./public/css/style.css" rel="stylesheet">
 </head>
 
 
@@ -40,8 +41,6 @@ try {
         }
         break;
       case 'editComment':
-        var_dump($_GET);
-        var_dump($_POST);
         if (isset($_GET['id_post']) && $_GET['id_comment'] > 0) {
           EditComment($_GET['id_post'], $_POST);
         } else {

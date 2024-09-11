@@ -14,5 +14,3 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'digiblog');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-
-define('DATE_FORMAT_FR', '%d/%m/%Y à %Hh%imin');
