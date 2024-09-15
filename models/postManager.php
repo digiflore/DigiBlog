@@ -3,7 +3,7 @@ require_once './models/connection.php';
 
 // ===== LECTURE ===== //
 
-// Retourne la liste des articles
+// Retourne la liste des derniers posts
 function GetLastPosts(int $limit): array
 {
   $sql = "SELECT * FROM posts ORDER BY creation_date DESC LIMIT ?";
@@ -15,8 +15,19 @@ function GetLastPosts(int $limit): array
   return $articles;
 }
 
-// Retourne un article spécifique
-function getArticle(int $id): array
+// Retourne la liste des derniers posts
+function GetPosts(): array
+{
+  $sql = "SELECT * FROM posts ORDER BY creation_date ASC";
+  $query = dbConnect()->prepare($sql);
+  $query->execute();
+  $articles = $query->fetchAll();
+  $query->closeCursor();
+  return $articles;
+}
+
+// Retourne un article spécifique 
+function GetPost(int $id): array
 {
   $sql = "SELECT * FROM posts WHERE id = ?";
   $query = dbConnect()->prepare($sql);

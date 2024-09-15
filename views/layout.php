@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
+  <link href="./public/css/style.css" rel="stylesheet">
+  <link href="./public/css/green-nav.css" rel="stylesheet">
   <title>Digiblog</title>
 </head>
 

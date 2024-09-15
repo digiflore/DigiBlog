@@ -1,1 +1,0 @@
-<p align="right">Se connecter</p>

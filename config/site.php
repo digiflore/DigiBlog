@@ -14,3 +14,6 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'digiblog');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+
+// Parameters
+define('NB_LAST_POSTS', 3);

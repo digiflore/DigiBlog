@@ -4,17 +4,6 @@
 <head>
   <meta charset="utf-8">
   <title>Mon blog - Liste des articles</title>
-  <script>
-    function AddFormComment() {
-      document.getElementById("frmAddComment").style.display = "block";
-      document.getElementById("frmEditComment").style.display = "none";
-    }
-
-    function EditFormComment() {
-      document.getElementById("frmAddComment").style.display = "none";
-      document.getElementById("frmEditComment").style.display = "block";
-    }
-  </script>
 </head>
 
 <body>
@@ -23,7 +12,7 @@
   <div class="news">
     <h3>
       <?= htmlspecialchars($post['title']) ?>
-      <em>le <?= $post['creation_date_fr'] ?></em>
+      <em>le <?= $post['creation_date'] ?></em>
     </h3>
 
     <p>
@@ -63,24 +52,6 @@
       </div>
     </form>
   </div>
-  <!-- Formulaire pour modifier un commentaire -->
-  <div id="frmEditComment">
-    <h4>Modifier un commentaire</h4>
-    <form method="post">
-      <input type="submit" name="submit" value="Annuler" />
-    </form>
-    <p><strong><?= htmlspecialchars($_POST['author']) ?></strong> le <?= $_POST['comment_date_fr'] ?></p>
-    <form action="index.php?action=editComment&id_post=<?= $post['id'] ?>&id_comment=<?= $_POST['id'] ?>" method="post">
-      <input type="hidden" id="id" name="id" value="<?= isset($_POST["id"]) ? $_POST["id"] : ""; ?>" />
-      <div>
-        <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment" cols=45 rows=5 /><?= isset($_POST["comment"]) ? $_POST["comment"] : ""; ?></textarea>
-      </div>
-      <div>
-        <input type="submit" value="Modifier" />
-      </div>
-    </form>
-  </div>
   <?php
   // Pour chaque commentaire 
   while ($comment = $comments->fetch()) {
@@ -109,16 +80,6 @@
   }
   ?>
   </table>
-
-  <?php
-  if (isset($_POST)) {
-    if (isset($_POST['submit']) && $_POST['submit'] == "Modifier") {
-      echo "<script type='text/javascript'>EditFormComment();</script>";
-    } else {
-      echo "<script type='text/javascript'>AddFormComment();</script>";
-    }
-  }
-  ?>
 </body>
 
 </html>
