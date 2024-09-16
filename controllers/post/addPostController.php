@@ -1,6 +1,6 @@
 <?php
 require_once './models/postManager.php';
 
-$posts = GetPosts();
+CreatePost($_POST);
 
 $template = './views/pages/post/list_posts.php';

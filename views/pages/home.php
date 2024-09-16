@@ -1,7 +1,5 @@
 <div class="home">
   <h1>Digiblog</h1>
-  <?php
-  ?>
   <?php foreach ($posts as $post) { ?>
     <div class="news">
       <h3>

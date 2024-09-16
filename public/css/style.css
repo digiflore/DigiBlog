@@ -10,10 +10,11 @@ h3 {
 }
 .news p {
   background-color: #cccccc;
-  margin-top: 0px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 .news {
-  width: 50%;
+  width: 40%;
   margin: auto;
 }
 

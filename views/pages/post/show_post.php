@@ -23,7 +23,7 @@
   <!-- Formulaire pour ajouter un commentaire -->
   <div id="frmAddComment">
     <h4>Ajouter un commentaire</h4>
-    <form action="index.php?action=addComment&id_post=<?= $post['id'] ?>" method="post">
+    <form action="index.php?page=add_comment&id_post=<?= $post['id'] ?>" method="post">
       <table>
         <tr>
           <td>

@@ -6,7 +6,7 @@ require_once './models/connection.php';
 // Retourne la liste des derniers posts
 function GetLastPosts(int $limit): array
 {
-  $sql = "SELECT * FROM posts ORDER BY creation_date DESC LIMIT ?";
+  $sql = "SELECT * FROM dg_post ORDER BY creation_date DESC LIMIT ?";
   $query = dbConnect()->prepare($sql);
   $query->bindParam(1, $limit, PDO::PARAM_INT);
   $query->execute();
@@ -18,7 +18,7 @@ function GetLastPosts(int $limit): array
 // Retourne la liste des derniers posts
 function GetPosts(): array
 {
-  $sql = "SELECT * FROM posts ORDER BY creation_date ASC";
+  $sql = "SELECT * FROM dg_post ORDER BY creation_date ASC";
   $query = dbConnect()->prepare($sql);
   $query->execute();
   $articles = $query->fetchAll();
@@ -29,7 +29,7 @@ function GetPosts(): array
 // Retourne un article spécifique 
 function GetPost(int $id): array
 {
-  $sql = "SELECT * FROM posts WHERE id = ?";
+  $sql = "SELECT * FROM dg_post WHERE id = ?";
   $query = dbConnect()->prepare($sql);
   $query->bindParam(1, $id, PDO::PARAM_INT);
   $query->execute();
@@ -41,23 +41,23 @@ function GetPost(int $id): array
 // ===== ECRITURE ===== //
 
 // Ajoute un nouvel article en BDD
-function addArticle(array $fields): void
+function CreatePost(array $fields): void
 {
   $title = $fields['title'];
   $content = $fields['content'];
-  $created_at = date_format(new DateTime('NOW'), 'Y-m-d H:i:s');
-  $sql = "INSERT INTO articles (title, content, created_at) VALUES (:title, :content, :created_at)";
+  $creation_date = date_format(new DateTime('NOW'), 'Y-m-d H:i:s');
+  $sql = "INSERT INTO dg_post (title, content, creation_date) VALUES (:title, :content, :created_at)";
   $query = dbConnect()->prepare($sql);
   $query->bindParam(':title', $title, PDO::PARAM_STR);
   $query->bindParam(':content', $content, PDO::PARAM_STR);
-  $query->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+  $query->bindParam(':creation_date', $creation_date, PDO::PARAM_STR);
   $query->execute();
 }
 
 // Supprime un article en BDD
-function deleteArticle(int $id): void
+function DeletePost(int $id): void
 {
-  $sql = "DELETE FROM articles WHERE id = :id";
+  $sql = "DELETE FROM dg_post WHERE id = :id";
   $query = dbConnect()->prepare($sql);
   $query->bindParam(':id', $id, PDO::PARAM_INT);
   $query->execute();
@@ -69,7 +69,7 @@ function editArticle(int $id, array $fields): void
   $title = $fields['title'];
   $content = $fields['content'];
   $updated_at = date_format(new DateTime('NOW'), 'Y-m-d H:i:s');
-  $sql = "UPDATE articles SET title = :title, content = :content, updated_at = :updated_at WHERE id = :id";
+  $sql = "UPDATE dg_post SET title = :title, content = :content, updated_at = :updated_at WHERE id = :id";
   $query = dbConnect()->prepare($sql);
   $query->bindParam(':id', $id, PDO::PARAM_INT);
   $query->bindParam(':title', $title, PDO::PARAM_STR);

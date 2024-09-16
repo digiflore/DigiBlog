@@ -10,8 +10,8 @@
 
 <body>
   <?php require './views/partials/_header.php'; ?>
-  <main>
-    <?php require($template); ?>
+  <main class="main">
+    <?php require $template; ?>
   </main>
   <?php require './views/partials/_footer.php'; ?>
 </body>
